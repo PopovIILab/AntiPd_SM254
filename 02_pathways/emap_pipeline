@@ -1,0 +1,22 @@
+SAMPLES = glob_wildcards("data/{sample}.fa").sample
+
+rule all:
+    input:
+        expand("eggNOG/{sample}/", sample=SAMPLES)
+
+rule run_emapper:
+    input:
+        "data/{sample}.fa"
+    output:
+        directory("eggNOG/{sample}/")
+    params:
+        prefix= lambda wildcards: wildcards.sample,
+        db="/home/user/eggNOG-mapper_DB"
+    threads:
+        0
+    conda: "emapper"
+    shell:
+        """
+        mkdir -p eggNOG/{wildcards.sample}
+        emapper.py -i {input} --itype genome --genepred prodigal -o {params.prefix} --output_dir {output} --data_dir {params.db} --cpu {threads} --override
+        """
