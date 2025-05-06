@@ -1,6 +1,6 @@
 <img src="https://github.com/PopovIILab/AntiPd_SM254/blob/main/imgs/SvP.png" align="left" width = 20%/>
 
-# _Streptomyces albidoflavus SM254_ v. _Pseudogymnoascus destructans_: Dawn of Justice
+# _Streptomyces albidoflavus_ SM254 v. _Pseudogymnoascus destructans_: Dawn of Justice
 
 > This is the repository for supplementary materials for the upcoming publication
 
