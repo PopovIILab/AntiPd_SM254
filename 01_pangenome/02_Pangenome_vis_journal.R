@@ -12,7 +12,7 @@ setwd(main_dir)
 if (!require("pacman"))
   install.packages("pacman")
 
-pacman::p_load(ggplot2, dplyr, tidyr, ggnewscale, ggrepel, patchwork)
+pacman::p_load(ggplot2, dplyr, tidyr, ggnewscale, ggrepel, patchwork, ggtext)
 
 #######################
 # Part 1: Donut chart #
@@ -68,10 +68,8 @@ pangenome_donut <- ggplot(gene_counts,
   xlim(c(-1, 4)) +
   labs(caption = "*Streptomyces albidoflavus* pangenome composition") +
   theme_void() +
-  theme(
-    legend.position = "none",
-    plot.caption = element_markdown(size = 14, hjust = 0.5)
-  )
+  theme(legend.position = "none",
+        plot.caption = element_markdown(size = 14, hjust = 0.5))
 
 
 ggsave(
@@ -88,12 +86,15 @@ ggsave(
 
 
 # Read the data
-sm254_df <- read.delim("pangenome/sm254_pangenome.tsv", sep = "\t", header = TRUE)
+sm254_df <- read.delim("pangenome/sm254_pangenome.tsv",
+                       sep = "\t",
+                       header = TRUE)
 
 # Set 'Category' as a factor with correct order and new labels
 sm254_df$Category <- factor(
   sm254_df$Category,
-  levels = c("Cloud", "Shell", "Soft-core", "Core"),  # Desired order
+  levels = c("Cloud", "Shell", "Soft-core", "Core"),
+  # Desired order
   labels = c("Cloud genes", "Shell genes", "Soft-core genes", "Core genes")  # New names
 )
 
@@ -102,16 +103,18 @@ sm254_pangenome <- ggplot(sm254_df, aes(x = Count, y = Category, fill = Category
   geom_bar(stat = "identity") +
   geom_text(aes(label = Count), hjust = -0.2, size = 4) +
   theme_minimal() +
-  labs(
-    x = "",
-    y = ""
+  labs(x = "", y = "") +
+  scale_fill_manual(
+    values = c(
+      "Core genes" = "#3B3A3EFF",
+      # Blue
+      "Soft-core genes" = "#898E9FFF",
+      # Green
+      "Shell genes" = "#3B7C70FF",
+      # Orange
+      "Cloud genes" = "#CE9642FF"       # Red
+    )
   ) +
-  scale_fill_manual(values = c(
-    "Core genes" = "#3B3A3EFF",       # Blue
-    "Soft-core genes" = "#898E9FFF",  # Green
-    "Shell genes" = "#3B7C70FF",      # Orange
-    "Cloud genes" = "#CE9642FF"       # Red
-  )) +
   xlim(0, max(sm254_df$Count) * 1.05) +
   labs(caption = "Total genes (*Streptomyces albidoflavus* SM254)") +
   theme(
