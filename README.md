@@ -6,7 +6,7 @@
 
 **Pipeline:**
 
-![AntiPd_SM254](https://github.com/user-attachments/assets/5a5ad00b-03ca-480e-b196-13460720221c)
+![AntiPd_SM254](https://github.com/user-attachments/assets/e8e6f989-b762-4b69-84af-310beb9d9091)
 
 _Figure 1. Pipeline overview._
 
