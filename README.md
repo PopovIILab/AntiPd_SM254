@@ -18,7 +18,7 @@ _Figure 1. Pipeline overview._
 
 ## **Citation**
 
-The paper has been published on June 20, 2025 in International Journal of Molecular Sciences
+The paper has been published on July 22, 2025 in Brazilian Journal of Microbiology
 
 [Popov, I.V., Chikindas, M.L. & Popov, I.V. Genomic insights into *Streptomyces albidoflavus* SM254: tracing the putative signs of anti-*Pseudogymnoascus destructans* properties. Braz J Microbiol 56, 2121–2131 (2025). https://doi.org/10.1007/s42770-025-01740-8](https://link.springer.com/article/10.1007/s42770-025-01740-8)
 
