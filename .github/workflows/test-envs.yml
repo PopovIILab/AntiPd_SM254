@@ -1,0 +1,22 @@
+name: Test conda envs
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
+    strategy:
+      matrix:
+        include:
+          - env: panani.yaml
+            path: 01_pangenome
+          - env: annotation.yaml
+            path: 02_pathways
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v4
+        with:
+          miniforge-version: latest
+          activate-environment: test
+      - run: conda env create -f ${{ matrix.path }}/${{ matrix.env }} --dry-run
