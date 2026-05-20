@@ -1,0 +1,14 @@
+name: streptomyces_functional
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - eggnog-mapper=2.1.12
+  - snakemake=8.20.2
+  - python=3.12
+  - pip=25.0.1
+  - ipykernel=6.29.5
+  - pip:
+      - pandas==2.2.1
+      - kegganog==1.0
